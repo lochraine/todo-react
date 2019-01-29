@@ -1,23 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import Todo1 from './Components/Todo/Todo1';
+import Todo from './Components/Todo/Todo';
 
 let id = 0;
-const Todo = (props) => {
-  
-
-  
-    return(
-      
-    <li>
-      <input onChange={props.toggleTodo} type="checkbox" checked={props.todo.checked}/>
-      <button>delete</button>
-      <span>{props.todo.text}</span>
-    </li>
-    
-  );
-
-}
 class App extends Component {
   constructor() {
     super()
@@ -59,6 +44,7 @@ toggleTodo(id) {
   render() {
     return (
       <div>
+      <div>Unchecked Todos: {this.state.todos.filter(todo => !todo.checked).length}</div>
       <button onClick={this.newTodo} type="button">new todo</button>
         <ul>
         {this.state.todos.map((todo) => (
